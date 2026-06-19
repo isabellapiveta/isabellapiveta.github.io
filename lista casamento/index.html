@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="pt-BR"><head><script src="/_sdk/telemetry_sdk.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isabella &amp; Pedro</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&amp;family=Raleway:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/editing_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>
+    :root{--olive:#6e744e;--olive-dark:#555b38;--cream:#f6f3eb;--paper:#fffdf8;--line:#ded8ca;--ink:#49483f;--muted:#777367}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Raleway',sans-serif;color:var(--ink);background:var(--cream)}
+    .serif{font-family:'Cardo',serif}
+    .gift-card{transition:transform .3s ease,box-shadow .3s ease}
+    .gift-card:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(69,73,51,.12)}
+    .gift-action{transition:transform .25s ease,background .25s ease,border-color .25s ease,color .25s ease}
+    .gift-action:hover{transform:translateY(-2px)}
+    .gift-action-primary:hover{background:#59603e}
+    .gift-action-secondary:hover{background:#fff;border-color:#596042;color:#3a3930}
+    .soft-fade{animation:fadeUp .8s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .botanical::before,.botanical::after{content:"";position:absolute;width:130px;height:130px;border:1px solid rgba(255,255,255,.25);border-radius:999px;pointer-events:none}
+    .botanical::before{left:28px;bottom:-55px}
+    .botanical::after{right:34px;top:-55px}
+    #mobile-menu{position:fixed;left:0;top:72px;right:0;z-index:40;background:#f6f3eb;border-bottom:1px solid #ded8ca;display:flex;flex-direction:column;max-height:calc(100 * min(var(--vh, 1vh), 1vh) - 72px);overflow-y:auto;transform:translateY(-110%);opacity:0;transition:transform .3s ease,opacity .3s ease}
+    #mobile-menu.open{transform:translateY(0);opacity:1}
+    #mobile-menu a{display:block;padding:14px 20px;font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:#6b6d5b;font-weight:600;border-bottom:1px solid #ede9df}
+    .backdrop-overlay{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .backdrop-overlay.open{opacity:1;pointer-events:auto}
+    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #bfc49f;outline-offset:3px}
+    /* Modal styles para recados */
+    .mc-modal{display:none;position:fixed;inset:0;z-index:60;align-items:center;justify-content:center;padding:20px}
+    .mc-modal.open{display:flex}
+    .mc-modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(2px)}
+    .mc-modal-panel{position:relative;z-index:62;max-width:560px;width:100%;background:var(--paper);border-radius:14px;padding:22px;box-shadow:0 10px 30px rgba(69,73,51,.12);color:var(--ink)}
+    .mc-modal-panel h2{font-size:20px;margin:0 0 6px}
+    .mc-modal-desc{color:var(--muted);margin-bottom:12px;font-size:14px}
+    .mc-input,.mc-textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font-size:14px;color:var(--ink);background:transparent}
+    .mc-textarea{min-height:110px;resize:vertical}
+    .mc-actions{display:flex;gap:10px;margin-top:12px;align-items:center}
+    .btn-primary{background:var(--olive);color:white;padding:10px 14px;border-radius:8px;border:none;font-weight:600;cursor:pointer}
+    .btn-secondary{background:transparent;border:1px solid var(--line);color:var(--olive-dark);padding:10px 14px;border-radius:8px;cursor:pointer}
+    .mc-modal-close{position:absolute;right:12px;top:10px;background:transparent;border:none;font-size:20px;color:var(--muted);cursor:pointer}
+  </style>
+  <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full" style="background: rgb(246, 243, 235);">
+  <div class="w-full overflow-hidden">
+   <div class="backdrop-overlay" id="backdrop-overlay"></div>
+   <nav id="mobile-menu" class="lg:hidden"><a href="#home">Início</a><a href="#story">Nossa história</a><a href="#gifts">Presentes</a><a href="#messages">Mensagens</a>
+   </nav>
+   <header data-template-id="header-section" class="canva-header fixed top-0 left-0 right-0 z-50 border-b border-[#ddd7c8]" style="background: rgb(246, 243, 235);">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-5 flex items-center justify-between gap-4">
+     <div class="flex items-center gap-3">
+      <div class="w-9 h-9 flex items-center justify-center text-[#727859]">
+       <i data-lucide="leaf" class="w-5 h-5"></i>
+      </div><span data-template-id="brand-monogram" class="canva-text serif" style="color: rgb(114, 120, 89); font-weight: 700; font-style: normal; font-size: 18px;">I &amp; P</span>
+     </div>
+     <nav class="hidden lg:flex items-center gap-8 text-[10px] uppercase tracking-[0.16em]"><a href="#home" data-template-id="nav-home" class="canva-link" style="color: rgb(107, 109, 91); font-weight: 600; font-style: normal; font-size: 10px;">Início</a> <a href="#story" data-template-id="nav-story" class="canva-link" style="color: rgb(107, 109, 91); font-weight: 600; font-style: normal; font-size: 10px;">Nossa história</a> <a href="#gifts" data-template-id="nav-gifts" class="canva-link" style="color: rgb(107, 109, 91); font-weight: 600; font-style: normal; font-size: 10px;">Presentes</a> <a href="#messages" data-template-id="nav-message" class="canva-link" style="color: rgb(107, 109, 91); font-weight: 600; font-style: normal; font-size: 10px;">Mensagens</a>
+     </nav>
+     <div class="flex items-center gap-3"><a href="#gifts" data-template-id="header-cta" class="canva-button hidden sm:inline-flex items-center rounded-full px-5 py-2.5 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(107, 116, 79); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 10px;">Ver presentes</a> <button id="mobile-menu-toggle" class="lg:hidden p-2 text-[#727859]" aria-label="Abrir menu" aria-expanded="false"><i data-lucide="menu" class="w-6 h-6"></i></button>
+     </div>
+    </div>
+   </header>
+   <main>
+    <section id="home" class="w-full pt-[72px]">
+     <div class="w-full px-4 sm:px-8 lg:px-10 py-12 sm:py-16 lg:py-20 bg-[#f6f3eb]">
+      <div class="max-w-3xl mx-auto">
+       <div class="text-center mb-12">
+        <h1 data-template-id="hero-names" class="canva-text serif leading-[0.95] whitespace-pre-line text-[#596042] mb-4" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 52px; line-height: 0.95;">ISABELLA
+&amp; PEDRO</h1>
+        <p data-template-id="hero-description" class="canva-text leading-7 text-[#777367] mb-8 text-xl" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.7;">Depois de 10 anos de namoro, muitas risadas, encontros de carros, playlists infinitas e planos compartilhados, chegou a hora de começar oficialmente a nossa próxima aventura.</p>
+       </div>
+       <div class="relative w-full mb-12 overflow-hidden rounded-md">
+        <div id="carousel-container" class="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] flex overflow-x-auto snap-x snap-mandatory scroll-smooth" style="scroll-behavior: smooth;">
+         <div class="w-full flex-shrink-0 snap-center"><img data-template-id="hero-image" loading="lazy" class="canva-image w-full h-full object-cover" src="canva://MAHLK76nMdI/1" alt="Foto do casal no dia do casamento">
+         </div>
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-2" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/22707222/pexels-photo-22707222.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple holds hands walking on a countryside path at sunset, in a peaceful autumn setting.">
+         </div>
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-3" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/11964107/pexels-photo-11964107.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A happy couple enjoys a playful moment together amidst nature, embracing love and joy.">
+         </div>
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-4" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/30908048/pexels-photo-30908048.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A couple holding hands by a pond in Buenos Aires under warm sunlight, capturing a romantic moment.">
+         </div>
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-5" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/9143583/pexels-photo-9143583.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A joyful couple dances under twinkling string lights amidst tall trees at a serene campsite during dusk.">
+         </div>
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-6" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/37084950/pexels-photo-37084950.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple enjoying a scenic drive in a vintage convertible through dry countryside landscape.">
+         </div>
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-7" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/3152272/pexels-photo-3152272.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A romantic couple standing in a field at sunset, embracing in a serene countryside setting.">
+         </div>
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-8" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/16190499/pexels-photo-16190499.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple enjoying a romantic moment during a picnic in the park. Relaxed and intimate setting.">
+         </div>
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-9" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/36767076/pexels-photo-36767076.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A cheerful couple enjoys cooking together in a cozy kitchen, surrounded by fresh vegetables.">
+         </div>
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-10" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/3971449/pexels-photo-3971449.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple standing on rooftop terrace, viewing city skyline during golden hour sunset.">
+         </div>
+        </div><button class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 transition" style="display: none;"> <i data-lucide="chevron-left" class="w-5 h-5 text-[#596042]"></i> </button> <button class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-2 transition" style="display: none;"> <i data-lucide="chevron-right" class="w-5 h-5 text-[#596042]"></i> </button>
+       </div>
+       <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+        <div class="text-center"><i data-lucide="calendar-days" class="w-6 h-6 mx-auto mb-4 text-[#8b9170]"></i>
+         <p data-template-id="hero-date-label" class="canva-text uppercase tracking-[0.16em] mb-2 text-xs sm:text-[11px]" style="color: rgb(125, 131, 100); font-weight: 600; font-style: normal; font-size: 13px;">data</p>
+         <p data-template-id="hero-date" class="canva-text serif text-[#596042] text-xl sm:text-xl md:text-lg" style="color: rgb(125, 131, 100); font-weight: 600; font-style: normal; font-size: 18px;">24.10.2026</p>
+        </div>
+        <div class="text-center"><i data-lucide="map-pin" class="w-6 h-6 mx-auto mb-4 text-[#8b9170]"></i>
+         <p data-template-id="hero-place-label" class="canva-text uppercase tracking-[0.16em] mb-2 text-xs sm:text-[11px]" style="color: rgb(125, 131, 100); font-weight: 600; font-style: normal; font-size: 13px;">local</p>
+         <p data-template-id="hero-place" class="canva-text serif text-[#596042] text-xl sm:text-xl md:text-lg" style="color: rgb(125, 131, 100); font-weight: 600; font-style: normal; font-size: 18px;">Guarulhos/SP</p>
+        </div>
+        <div class="text-center"><i data-lucide="calendar" class="w-6 h-6 mx-auto mb-4 text-[#8b9170]"></i>
+         <p data-template-id="hero-countdown-label" class="canva-text uppercase tracking-[0.16em] mb-2 text-xs sm:text-[11px]" style="color: rgb(125, 131, 100); font-weight: 600; font-style: normal; font-size: 13px;">Faltam</p>
+         <p class="serif text-[#596042] text-5xl sm:text-5xl md:text-2xl font-bold"><span id="days-count">0</span><br><span class="text-base sm:text-lg md:text-sm text-[#8b9170]" data-template-id="hero-countdown-unit" style="font-weight: 400; font-style: normal; font-size: 21px;">dias</span></p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="story" class="w-full px-4 sm:px-8 lg:px-10 py-14 sm:py-16 lg:py-20 bg-[#faf8f3]">
+     <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+       <div class="flex justify-center mb-2 text-[#8b9170]">
+        <i data-lucide="leaf" class="w-4 h-4"></i>
+       </div>
+       <p data-template-id="story-eyebrow" class="canva-text uppercase tracking-[0.22em] mb-3" style="color: rgb(125, 131, 100); font-weight: 600; font-style: normal; font-size: 12px;">Como tudo começou</p>
+       <h2 data-template-id="story-title" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 28px;">Uma história de 10 anos</h2>
+      </div>
+      <div class="grid md:grid-cols-[1fr_1fr] gap-8 items-center">
+       <div class="order-2 md:order-1">
+        <img data-template-id="story-image" loading="lazy" class="canva-image w-full h-auto object-cover rounded-md" src="canva://MAHMv2FdzhA/1" alt="A romantic couple walks hand in hand on a tropical beach at sunset, enjoying a serene moment together.">
+       </div>
+       <div class="order-1 md:order-2">
+        <p data-template-id="story-text-1" class="canva-text leading-7 mb-4" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.6;">Nossa história começou em 2015, quando ainda éramos apenas amigos. Entre conversas, conselhos amorosos e uma amizade que crescia cada vez mais, o amor apareceu de um jeito leve e inesperado.</p>
+        <p data-template-id="story-text-2" class="canva-text leading-7 mb-4" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.6;">Depois de alguns caminhos se cruzarem novamente, percebemos que já não fazia sentido imaginar a vida um sem o outro. Então, no dia 20 de outubro de 2016, começamos oficialmente nossa história como casal.</p>
+        <p data-template-id="story-text-3" class="canva-text leading-7" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.6;">Desde então, crescemos juntos em todas as fases da vida: adolescência, juventude e vida adulta. Foram anos de parceria, amadurecimento, sonhos compartilhados e muito amor.
+
+E em 2025 veio o tão esperado pedido: entre flores, um carro cheio de significado e um “casa comigo” escrito no capô, começava oficialmente um novo capítulo da nossa história.
+
+Agora, depois de quase 10 anos juntos, chegou a hora de celebrar tudo isso ao lado das pessoas que amamos.</p>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="gifts" class="w-full px-4 sm:px-8 lg:px-10 py-14 sm:py-16 lg:py-20">
+     <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+       <div class="flex justify-center mb-2 text-[#8b9170]">
+        <i data-lucide="leaf" class="w-4 h-4"></i>
+       </div>
+       <p data-template-id="gifts-main-eyebrow" class="canva-text uppercase tracking-[0.22em] mb-3" style="color: rgb(125, 131, 100); font-weight: 600; font-style: normal; font-size: 12px;">Nossas listas de presentes</p>
+       <h2 data-template-id="gifts-main-title" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 28px;">Escolha sua forma de celebrar</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12 mb-20">
+       <div class="bg-white border border-[#ded8ca] rounded-md p-8 flex flex-col justify-center items-center text-center">
+        <div class="flex justify-center mb-4 text-[#8b9170]">
+         <i data-lucide="home" class="w-6 h-6"></i>
+        </div>
+        <h3 data-template-id="amazon-section-title" class="canva-text serif mb-3" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 22px;">Para nossa casa</h3>
+        <p data-template-id="amazon-section-text" class="canva-text leading-7 mb-6" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.6;">Para quem prefere nos presentear com itens físicos, criamos uma lista com algumas coisinhas que farão parte do nosso novo lar 💚</p><a href="https://www.amazon.com.br/hz/wishlist/ls/1RUX0UG5U1B42?ref_=wl_share" target="_blank" rel="noopener noreferrer" data-template-id="amazon-button" class="canva-button inline-flex items-center rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.12em]" style="background: rgb(108, 116, 79); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 10px;">Ver lista na Amazon</a>
+       </div>
+       <div class="bg-white border border-[#ded8ca] rounded-md p-8 flex flex-col justify-center items-center text-center">
+        <div class="flex justify-center mb-4 text-[#8b9170]">
+         <i data-lucide="sparkles" class="w-6 h-6"></i>
+        </div>
+        <h3 data-template-id="experiences-section-title" class="canva-text serif mb-3" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 22px;">Experiências &amp; sonhos</h3>
+        <p data-template-id="experiences-section-text" class="canva-text leading-7" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.6;">Também criamos uma lista simbólica para quem deseja contribuir com experiências, planos e momentos especiais da nossa nova fase juntos.</p>
+       </div>
+      </div>
+      <div class="text-center max-w-2xl mx-auto mb-10">
+       <p data-template-id="experiences-subtitle" class="canva-text uppercase tracking-[0.22em] mb-3" style="color: rgb(125, 131, 100); font-weight: 600; font-style: normal; font-size: 12px;">Nossa lista simbólica</p>
+       <h2 data-template-id="experiences-title" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 29px;">Presentes com a nossa cara</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-1" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/9216589/pexels-photo-9216589.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Close-up of a man refueling a car at a gas station, focusing on the gasoline pump.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="fuel" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-1" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Gasolina para aventuras aleatórias</h3>
+          <p data-template-id="gift-description-1" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Porque nossos melhores planos quase sempre começam com um “vamos só dar uma volta?”.</p>
+          <p data-template-id="gift-price-1" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 158,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="https://link.picpay.com/p/17817238196a32f2ab65389" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="https://mpago.li/1NL9HJi" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-2" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/3904916/pexels-photo-3904916.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A shark gracefully swims in the tunnel of Antalya Aquarium, captured through clear glass.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="fish" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-2" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Date oficial com tubarões</h3>
+          <p data-template-id="gift-description-2" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Porque a Isabella considera tubarões quase celebridades, só que com mais dentes.</p>
+          <p data-template-id="gift-price-2" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 294,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="https://link.picpay.com/p/17818043596a342d472dab2" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="https://mpago.li/2jPzTSh" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-3" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/16896020/pexels-photo-16896020.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A vibrant car meet at night showcasing various models in an urban parking lot.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="car" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-3" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Nosso rolê em encontro de carros antigos</h3>
+          <p data-template-id="gift-description-3" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para admirarmos carros lindos, fingirmos costume e voltarmos comentando tudo no caminho.</p>
+          <p data-template-id="gift-price-3" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 337,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="https://link.picpay.com/p/17818047006a342e9c7af5f" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="https://mpago.li/2dXa2M9" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-4" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A detailed close-up view of a vintage vinyl record spinning on a turntable, capturing its nostalgic beauty.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="music" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-4" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Trilha sonora oficial da nossa vida</h3>
+          <p data-template-id="gift-description-4" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para abastecer playlists, cantorias e aquelas músicas que a gente jura que foram feitas pra nós.</p>
+          <p data-template-id="gift-price-4" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 189,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="https://link.picpay.com/p/17818049726a342fac0f699" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="https://mpago.li/2dRLLVf" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-5" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/14564879/pexels-photo-14564879.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A man and a woman having fun at a karaoke event, dressed in casual and stylish outfits.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="mic-2" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-5" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Karaokê para testar a paciência um do outro</h3>
+          <p data-template-id="gift-description-5" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Porque amar também é ouvir a mesma música cantada com muita emoção e pouca afinação.</p>
+          <p data-template-id="gift-price-5" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 232,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="https://link.picpay.com/p/17818051476a34305b52d1d" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="https://mpago.li/1mepQ78" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-6" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/35155839/pexels-photo-35155839.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Close-up of colorful yarn balls showcasing vibrant patterns ideal for knitting and crocheting projects.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="scissors" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-6" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Fios para projetos duvidosamente ambiciosos</h3>
+          <p data-template-id="gift-description-6" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para o crochê render peças lindas, surtos criativos e talvez uma coleção inteira sem querer.</p>
+          <p data-template-id="gift-price-6" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 148,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="https://link.picpay.com/p/17818053996a3431572dec8" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="https://mpago.li/1Eu1q7t" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-7" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/5530680/pexels-photo-5530680.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A young couple reading and enjoying a sunny picnic on a blanket surrounded by nature.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="sandwich" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-7" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Piquenique de filme romântico</h3>
+          <p data-template-id="gift-description-7" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para uma tarde bonita, comidinhas gostosas e a gente fingindo que formigas não existem.</p>
+          <p data-template-id="gift-price-7" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 200,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="https://link.picpay.com/p/17818057076a34328b977cc" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="https://mpago.li/1YqtB7k" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-8" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/7488996/pexels-photo-7488996.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Asian couple preparing a meal together in a bright kitchen, sharing a joyful moment.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="utensils" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-8" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Jantar feito a quatro mãos</h3>
+          <p data-template-id="gift-description-8" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para testarmos uma receita nova e descobrirmos quem realmente sabe seguir instruções.</p>
+          <p data-template-id="gift-price-8" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 260,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-9" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Close-up of a barista pouring milk to create latte art in a coffee cup.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="coffee" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-9" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Café e conversa até tarde</h3>
+          <p data-template-id="gift-description-9" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Porque um café gostoso sempre vira papo longo, risada e mais uma memória nossa.</p>
+          <p data-template-id="gift-price-9" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 120,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-10" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/9143829/pexels-photo-9143829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A couple enjoys a peaceful evening stargazing with a telescope and laptop at twilight.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="stars" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-10" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Uma noite para contar estrelas</h3>
+          <p data-template-id="gift-description-10" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para olharmos o céu, fazermos planos e fingirmos que sabemos reconhecer constelações.</p>
+          <p data-template-id="gift-price-10" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 240,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-11" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A detailed close-up view of a vintage vinyl record spinning on a turntable, capturing its nostalgic beauty.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="disc-3" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-11" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Noite musical só nossa</h3>
+          <p data-template-id="gift-description-11" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para cantar alto, dançar na sala e transformar qualquer terça-feira em lembrança boa.</p>
+          <p data-template-id="gift-price-11" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 160,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-12" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/7350844/pexels-photo-7350844.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A couple in brown coats walking and embracing on a mountain trail with scenic views.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="mountain" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-12" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Trilha para cansar juntos</h3>
+          <p data-template-id="gift-description-12" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para respirar ar puro, reclamar da subida e achar a vista linda no final.</p>
+          <p data-template-id="gift-price-12" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 350,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-13" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/37795026/pexels-photo-37795026.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A vivid collection of blue jellyfish illuminated in a dark aquarium setting, showcasing their ethereal beauty.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="waves" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-13" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Mais um passeio pelo fundo do mar</h3>
+          <p data-template-id="gift-description-13" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Porque aquário nunca é passeio demais quando um de nós ama o mar desse tanto.</p>
+          <p data-template-id="gift-price-13" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 300,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-14" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/4746666/pexels-photo-4746666.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Two people enjoying a relaxed breakfast in bed with pastries and coffee.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="sunrise" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-14" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Café da manhã sem pressa</h3>
+          <p data-template-id="gift-description-14" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para uma manhã preguiçosa, bonita e sem ninguém precisar sair correndo.</p>
+          <p data-template-id="gift-price-14" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 170,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-15" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/12836308/pexels-photo-12836308.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="View from car interior of a winding road and mountain range with lush scenery, ideal for travel inspiration.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="route" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-15" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Passeio sem destino de carro</h3>
+          <p data-template-id="gift-description-15" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para pegar a estrada, escolher a música e deixar o resto por conta do caminho.</p>
+          <p data-template-id="gift-price-15" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 290,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-16" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/14558503/pexels-photo-14558503.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Intimate dining scene with candlelight and hands held, perfect for romantic themes.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="utensils-crossed" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-16" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Um jantar daqueles especiais</h3>
+          <p data-template-id="gift-description-16" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para comer bem, conversar melhor ainda e pedir sobremesa como se não houvesse amanhã.</p>
+          <p data-template-id="gift-price-16" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 480,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-17" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/6262558/pexels-photo-6262558.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A loving couple shares an intimate dance in a warmly lit living room, viewed through the window.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="heart" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-17" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Dança improvisada na sala</h3>
+          <p data-template-id="gift-description-17" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para continuar colecionando aqueles momentos simples que acabam virando os melhores.</p>
+          <p data-template-id="gift-price-17" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 130,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-18" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/18031174/pexels-photo-18031174.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A young couple embraces at an outdoor music festival during the evening.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="music-2" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-18" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Show para cantar tudo junto</h3>
+          <p data-template-id="gift-description-18" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para viver uma noite de música boa, voz rouca e felicidade no volume máximo.</p>
+          <p data-template-id="gift-price-18" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 720,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-19" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/6414144/pexels-photo-6414144.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A man and a woman walking through a colorful botanical garden with lush flowers.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="flower-2" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-19" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Passeio entre flores e calma</h3>
+          <p data-template-id="gift-description-19" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para uma tarde leve, bonita e cheia de fotos que a gente vai amar guardar.</p>
+          <p data-template-id="gift-price-19" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 210,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-20" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/6932259/pexels-photo-6932259.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple painting at home, showcasing artistic collaboration and creativity in a relaxed setting.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="paintbrush" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-20" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Uma tarde criativa a dois</h3>
+          <p data-template-id="gift-description-20" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para colocar a mão na massa, rir do resultado e talvez descobrir novos talentos.</p>
+          <p data-template-id="gift-price-20" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 360,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-21" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/18031174/pexels-photo-18031174.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A young couple embraces at an outdoor music festival during the evening.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="ticket" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-21" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Um festival para chamar de nosso</h3>
+          <p data-template-id="gift-description-21" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para curtir música, comida boa e voltar com histórias pra contar por semanas.</p>
+          <p data-template-id="gift-price-21" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 980,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-22" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/18549873/pexels-photo-18549873.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Drone shot of a couple kayaking on calm water. A perfect adventure and recreational activity.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="waves" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-22" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Aventura sobre as águas</h3>
+          <p data-template-id="gift-description-22" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para remar juntos, admirar a paisagem e torcer para ninguém virar o caiaque.</p>
+          <p data-template-id="gift-price-22" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 540,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-23" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/12476646/pexels-photo-12476646.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A dramatic cloudy sky over an illuminated amusement park ride and ferris wheel.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="ferris-wheel" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-23" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Noite de parque e risadas</h3>
+          <p data-template-id="gift-description-23" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para comer besteira, rir de nervoso e descobrir quem grita mais na roda-gigante.</p>
+          <p data-template-id="gift-price-23" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 260,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-24" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/6184935/pexels-photo-6184935.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Young couple playing chess indoors, enjoying a cozy game together.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="dice-5" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-24" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Noite de jogos e competitividade saudável</h3>
+          <p data-template-id="gift-description-24" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para exercitar o amor, a estratégia e a habilidade de perder com classe. Talvez.</p>
+          <p data-template-id="gift-price-24" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 310,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-25" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/884600/pexels-photo-884600.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Savor the taste of authentic Japanese ramen with pork, egg, and fresh toppings in a warm broth.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="soup" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-25" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Date gastronômico bem caprichado</h3>
+          <p data-template-id="gift-description-25" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para experimentar sabores novos e sair comentando o prato preferido no caminho de volta.</p>
+          <p data-template-id="gift-price-25" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 420,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-26" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/731217/pexels-photo-731217.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Aerial view of airplane wing over fluffy clouds with a deep turquoise sky.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="plane" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-26" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Upgrade da nossa lua de mel</h3>
+          <p data-template-id="gift-description-26" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para começarmos essa nova fase com vista bonita, mala pronta e coração leve.</p>
+          <p data-template-id="gift-price-26" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 1.800,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-27" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/12165827/pexels-photo-12165827.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Intimate moment of a couple crafting pottery together, focusing on hands shaping clay.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="circle-dot" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-27" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Oficina para fazer arte juntos</h3>
+          <p data-template-id="gift-description-27" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para criar algo com as próprias mãos e levar pra casa uma lembrança com história.</p>
+          <p data-template-id="gift-price-27" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 390,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-28" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/29410747/pexels-photo-29410747.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A classic red convertible with passengers cruising along a coastal road at sunset.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="car-front" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-28" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Estrada, pôr do sol e nós dois</h3>
+          <p data-template-id="gift-description-28" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para um daqueles passeios em que a paisagem já vale tudo antes mesmo de chegar.</p>
+          <p data-template-id="gift-price-28" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 760,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-29" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/2403077/pexels-photo-2403077.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A couple embraces at the base of a lush tropical waterfall surrounded by dense greenery.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="droplets" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-29" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Uma escapada para respirar natureza</h3>
+          <p data-template-id="gift-description-29" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para fugir da rotina, ouvir água caindo e lembrar que a vida também pode ir sem pressa.</p>
+          <p data-template-id="gift-price-29" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 890,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+       <article data-template-id="gift-card" class="canva-card gift-card rounded-md overflow-hidden border border-[#ded8ca] flex flex-col" style="background: rgb(255, 253, 248);">
+        <div class="relative">
+         <img data-template-id="gift-image-30" loading="lazy" class="canva-image w-full h-36 object-cover" src="https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A romantic couple walks hand in hand on a tropical beach at sunset, enjoying a serene moment together.">
+         <div class="absolute left-1/2 -bottom-4 -translate-x-1/2 w-9 h-9 rounded-full bg-[#73795b] text-white flex items-center justify-center border-2 border-[#f7f4ec]">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+         </div>
+        </div>
+        <div class="px-4 pt-7 pb-4 text-center flex flex-col flex-grow justify-between">
+         <div>
+          <h3 data-template-id="gift-title-30" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 700; font-style: normal; font-size: 16px;">Um pedacinho do nosso grande sonho</h3>
+          <p data-template-id="gift-description-30" class="canva-text mt-2 leading-5 min-h-[54px]" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Para somar carinho, lembranças e mais um capítulo bonito nessa aventura que estamos começando.</p>
+          <p data-template-id="gift-price-30" class="canva-text serif mt-0.5" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 17px;">R$ 2.500,00</p>
+         </div>
+         <div class="mt-5">
+          <p data-template-id="gift-helper" class="canva-text mb-3" style="color: rgb(93, 99, 70); font-weight: 400; font-style: italic; font-size: 10px;">Forma de pagamento</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+           <a href="#" data-template-id="gift-pix" class="canva-button gift-action gift-action-primary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em]" style="background: rgb(105, 113, 78); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 12px;">PIX</a><a href="#" data-template-id="gift-card-button" class="canva-button gift-action gift-action-secondary inline-flex justify-center rounded-sm py-2 text-[10px] uppercase tracking-[0.12em] border" style="background: rgb(255, 255, 255); color: rgb(69, 73, 45); font-weight: 600; font-style: normal; font-size: 12px;">Parcelar no Cartão</a>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+     </div>
+    </section>
+    <section id="messages" class="w-full px-4 sm:px-8 lg:px-10 py-14 sm:py-16 lg:py-20 bg-[#faf8f3]">
+     <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+       <div class="flex justify-center mb-2 text-[#8b9170]">
+        <i data-lucide="leaf" class="w-4 h-4"></i>
+       </div>
+       <p data-template-id="messages-eyebrow" class="canva-text uppercase tracking-[0.22em] mb-3" style="color: rgb(125, 131, 100); font-weight: 600; font-style: normal; font-size: 11px;">Deixe seu recado</p>
+       <h2 data-template-id="messages-title" class="canva-text serif" style="color: rgb(89, 96, 66); font-weight: 400; font-style: normal; font-size: 28px;">Mensagens para nós</h2>
+       <p data-template-id="messages-subtitle" class="canva-text mt-4 leading-7" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.6;">Deixe seus desejos, conselhos e bênçãos para nossa nova jornada juntos. Queremos guardar cada uma de suas palavras especiais.</p>
+      </div>
+      <form id="message-form" class="bg-white border border-[#ded8ca] rounded-md p-6 mb-5">
+       <div class="mb-4">
+        <label data-template-id="message-name-label" for="message-name" class="canva-text block mb-2" style="color: rgb(89, 96, 66); font-weight: 600; font-style: normal; font-size: 12px;">Seu nome</label><input id="message-name" type="text" maxlength="100" class="w-full px-3 py-2 border border-[#ded8ca] rounded text-base">
+       </div>
+       <div class="mb-4">
+        <label data-template-id="message-text-label" for="message-text" class="canva-text block mb-2" style="color: rgb(89, 96, 66); font-weight: 600; font-style: normal; font-size: 12px;">Sua mensagem (máx. 300 caracteres)</label><textarea id="message-text" maxlength="300" rows="4" class="w-full px-3 py-2 border border-[#ded8ca] rounded text-base resize-none"></textarea>
+        <p class="text-sm text-[#999] mt-1"><span id="char-count">0</span>/300</p>
+       </div><button data-template-id="message-submit-button" type="submit" class="canva-button w-full rounded-sm py-2 text-[12px] uppercase tracking-[0.12em]" style="background: rgb(107, 116, 79); color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 10px;">Publicar mensagem</button>
+      </form>
+      <p id="form-feedback" class="text-center text-sm mb-5 hidden"></p>
+      <div id="messages-list" class="space-y-4">
+       <p data-template-id="messages-empty" class="canva-text text-center text-[#999]" style="color: rgb(153, 153, 153); font-weight: 400; font-style: normal; font-size: 13px;">Nenhuma mensagem ainda. Seja o primeiro a deixar um recado! 💕</p>
+      </div>
+      <p id="messages-limit" data-template-id="messages-limit-warning" class="canva-text text-center text-[#c44a4a] mt-6 hidden" style="color: rgb(196, 74, 74); font-weight: 400; font-style: normal; font-size: 12px;">Desculpe, já atingimos o limite de mensagens. Muito obrigado pela participação de todos!</p>
+     </div>
+    </section>
+   </main>
+   <footer data-template-id="footer-section" class="canva-footer botanical relative overflow-hidden py-10 px-5" style="background: rgb(108, 116, 79);">
+    <div class="max-w-3xl mx-auto text-center relative z-10"><i data-lucide="heart" class="w-4 h-4 mx-auto mb-3 text-white/80"></i>
+     <p data-template-id="footer-quote" class="canva-text serif" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 17px;">Obrigada por participar deste grande sonho!</p>
+     <p data-template-id="footer-signature" class="canva-text serif italic mt-2" style="color: rgb(241, 238, 231); font-weight: 400; font-style: italic; font-size: 21px;">Com amor, Isabella e Pedro</p>
+    </div>
+   </footer>
+  </div>
+
+  <!-- Modal: deixar mensagem antes do pagamento -->
+  <div id="messageModal" class="mc-modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="mc-modal-backdrop" id="messageModalBackdrop"></div>
+    <div class="mc-modal-panel">
+      <button class="mc-modal-close" id="messageModalClose" aria-label="Fechar">×</button>
+      <h2 id="modalTitle" class="serif">💌 Deseja deixar uma mensagem para os noivos?</h2>
+      <p class="mc-modal-desc">Seu recado ficará guardado com carinho como lembrança desse momento especial. Esta etapa é totalmente opcional.</p>
+      <form id="guestMessageForm" class="mc-modal-form" autocomplete="off">
+        <label class="mc-label" for="guestName">Nome</label>
+        <input id="guestName" name="name" type="text" class="mc-input" placeholder="Seu nome (opcional)">
+        <label class="mc-label" for="guestMessage" style="margin-top:8px;display:block">Mensagem</label>
+        <textarea id="guestMessage" name="message" class="mc-textarea" placeholder="Escreva seu recado (opcional)" maxlength="500"></textarea>
+        <div class="mc-actions">
+          <button type="submit" class="btn-primary">Enviar mensagem e continuar</button>
+          <button type="button" class="btn-secondary" id="continueWithoutMessage">Continuar sem mensagem</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      lucide.createIcons();
+      const toggle=document.getElementById('mobile-menu-toggle'),menu=document.getElementById('mobile-menu'),backdrop=document.getElementById('backdrop-overlay');
+      const closeMenu=()=>{menu.classList.remove('open');backdrop.classList.remove('open');toggle.setAttribute('aria-expanded','false')};
+      const openMenu=()=>{menu.classList.add('open');backdrop.classList.add('open');toggle.setAttribute('aria-expanded','true')};
+      toggle.addEventListener('click',()=>menu.classList.contains('open')?closeMenu():openMenu());
+      backdrop.addEventListener('click',closeMenu);
+      menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+      const weddingDate=new Date('2026-10-24T00:00:00-03:00');
+      function updateCountdown(){const today=new Date();today.setHours(0,0,0,0);document.getElementById('days-count').textContent=Math.max(0,Math.ceil((weddingDate-today)/86400000))}
+      updateCountdown();setInterval(updateCountdown,60000);
+      
+      // Carousel functionality
+      const carousel=document.getElementById('carousel-container'),prevBtn=document.querySelector('.carousel-prev'),nextBtn=document.querySelector('.carousel-next');
+      if(carousel){
+        const slides=carousel.querySelectorAll('[data-template-id]');
+        let currentSlide=0;
+        const updateCarousel=()=>{
+          slides.forEach((slide,idx)=>{
+            if(idx===currentSlide){
+              slide.parentElement.classList.remove('hidden');
+              carousel.scrollLeft=idx*carousel.offsetWidth;
+            }else{
+              slide.parentElement.classList.add('hidden');
+            }
+          });
+          prevBtn.style.display=currentSlide>0?'block':'none';
+          nextBtn.style.display=currentSlide<slides.length-1?'block':'none';
+        };
+        prevBtn.addEventListener('click',()=>{if(currentSlide>0){currentSlide--;updateCarousel()}});
+        nextBtn.addEventListener('click',()=>{if(currentSlide<slides.length-1){currentSlide++;updateCarousel()}});
+        updateCarousel();
+      }
+
+      // Mensagem modal: abre antes do redirecionamento de pagamento
+      (function(){
+        const MESSAGE_STORAGE = {
+          // Salvamento via Apps Script (grava no Google Sheets)
+          type: 'apps-script',
+          appsScriptEndpoint: 'https://script.google.com/macros/s/AKfycbx8UjM3ocEOkfzqhtLz-n_iYmCJz6K1-y1QTL2k_CuJTZHpQXWyFZNxxtw_yiEigPM1/exec',
+          appsNameField: 'name',
+          appsMessageField: 'message'
+        };
+
+        let pendingPaymentLink = null;
+        const paymentLinks = document.querySelectorAll('#gifts a.gift-action');
+
+        function openModal(href){
+          pendingPaymentLink = href;
+          const modal = document.getElementById('messageModal');
+          if(!modal) return window.location.href = href;
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden','false');
+          setTimeout(()=>document.getElementById('guestName').focus(),50);
+        }
+
+        function closeModal(){
+          const modal = document.getElementById('messageModal');
+          if(!modal) return;
+          modal.classList.remove('open');
+          modal.setAttribute('aria-hidden','true');
+        }
+
+        paymentLinks.forEach(a=>{
+          a.addEventListener('click',function(e){
+            if (e.button===1 || e.metaKey || e.ctrlKey) return; // permitir abrir em nova aba
+            e.preventDefault();
+            openModal(a.href);
+          });
+        });
+
+        const backdrop = document.getElementById('messageModalBackdrop');
+        const closeBtn = document.getElementById('messageModalClose');
+        const continueBtn = document.getElementById('continueWithoutMessage');
+        const guestForm = document.getElementById('guestMessageForm');
+        const submitBtn = guestForm?guestForm.querySelector('button[type="submit"]'):null;
+
+        if(closeBtn) closeBtn.addEventListener('click', closeModal);
+        if(backdrop) backdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+        if(continueBtn) continueBtn.addEventListener('click', ()=>{ if(pendingPaymentLink) window.location.href = pendingPaymentLink; });
+
+        // Envia a mensagem para o Apps Script (Google Sheets) usando form+iframe.
+        function submitToStorage(name, message, cb){
+          if(!MESSAGE_STORAGE.appsScriptEndpoint){ cb(false); return; }
+          const iframeName = 'hidden_apps_iframe';
+          let iframe = document.getElementById(iframeName);
+          if(!iframe){
+            iframe = document.createElement('iframe');
+            iframe.style.display='none';
+            iframe.name = iframeName;
+            iframe.id = iframeName;
+            document.body.appendChild(iframe);
+          }
+          const form = document.createElement('form');
+          form.action = MESSAGE_STORAGE.appsScriptEndpoint;
+          form.method = 'POST';
+          form.target = iframeName;
+          form.style.display = 'none';
+          const nameField = MESSAGE_STORAGE.appsNameField || 'name';
+          const msgField = MESSAGE_STORAGE.appsMessageField || 'message';
+          const inName = document.createElement('input'); inName.type='hidden'; inName.name = nameField; inName.value = name || '';
+          const inMsg = document.createElement('input'); inMsg.type='hidden'; inMsg.name = msgField; inMsg.value = message || '';
+          form.appendChild(inName); form.appendChild(inMsg);
+          document.body.appendChild(form);
+          let done = false;
+          iframe.onload = function(){ if(done) return; done = true; setTimeout(()=>{ cb(true); form.remove(); }, 200); };
+          form.submit();
+          setTimeout(()=>{ if(!done){ done = true; cb(true); form.remove(); } }, 5000);
+        }
+
+        if(guestForm){
+          guestForm.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const name = document.getElementById('guestName').value.trim();
+            const message = document.getElementById('guestMessage').value.trim();
+            if(!name && !message){ closeModal(); if(pendingPaymentLink) window.location.href = pendingPaymentLink; return; }
+            if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Enviando...'; }
+            submitToStorage(name,message,()=>{ if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar mensagem e continuar'; } closeModal(); if(pendingPaymentLink) window.location.href = pendingPaymentLink; });
+          });
+        }
+
+      })();
+
+    });
+
+    let allMessages=[],sdkReady=false;
+    const messageDataHandler={onDataChanged(data){allMessages=data;renderMessages()}};
+
+    async function initDataSdk(){const result=await window.dataSdk.init(messageDataHandler);if(result.isOk){sdkReady=true}else{showFeedback('Não foi possível carregar as mensagens agora.','error')}}
+    function showFeedback(message,type){const feedback=document.getElementById('form-feedback');feedback.textContent=message;feedback.className=`text-center text-sm mb-5 ${type==='success'?'text-[#64704e]':'text-[#b35b5b]'}`;feedback.classList.remove('hidden');setTimeout(()=>feedback.classList.add('hidden'),3500)}
+    function formatDate(iso){return new Date(iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'})}
+    function renderMessages(){
+      const list=document.getElementById('messages-list'),empty=document.querySelector('[data-template-id="messages-empty"]'),limit=document.getElementById('messages-limit');
+      if(allMessages.length===0){list.innerHTML='';if(empty)list.appendChild(empty);limit.classList.add('hidden');return}
+      const existing=new Map([...list.querySelectorAll('[data-message-id]')].map(el=>[el.dataset.messageId,el]));
+      allMessages.forEach(msg=>{
+        let item=existing.get(msg.__backendId);
+        if(!item){item=document.createElement('article');item.dataset.messageId=msg.__backendId;item.className='bg-white border border-[#ded8ca] rounded-md p-4 flex items-start gap-3';item.innerHTML=`<div class="flex-1"><p class="font-semibold text-[#596042] text-sm message-name"></p><p class="text-[#777367] text-sm mt-1 leading-6 break-words message-text"></p><p class="text-xs text-[#aaa] mt-2 message-date"></p></div><button type="button" class="delete-btn flex-shrink-0 text-[#a15d5d] hover:text-[#833f3f] p-1" aria-label="Excluir mensagem"><i data-lucide="trash-2" class="w-4 h-4"></i></button>`;list.appendChild(item);item.querySelector('.delete-btn').addEventListener('click',()=>deleteMessage(msg.__backendId,item.querySelector('.delete-btn')))}
+        item.querySelector('.message-name').textContent=msg.name;item.querySelector('.message-text').textContent=msg.message;item.querySelector('.message-date').textContent=formatDate(msg.created_at);existing.delete(msg.__backendId)
+      });
+      existing.forEach(el=>el.remove());lucide.createIcons();limit.classList.toggle('hidden',allMessages.length<999)
+    }
+    async function deleteMessage(id,button){const msg=allMessages.find(item=>item.__backendId===id);if(!msg||!sdkReady)return;button.disabled=true;button.style.opacity='.45';const result=await window.dataSdk.delete(msg);if(result.isError){button.disabled=false;button.style.opacity='1';showFeedback('Não foi possível excluir a mensagem.','error')}}
+    document.getElementById('message-form').addEventListener('submit',async event=>{
+      event.preventDefault();
+      const nameInput=document.getElementById('message-name'),textInput=document.getElementById('message-text'),button=document.querySelector('[data-template-id="message-submit-button"]'),name=nameInput.value.trim(),message=textInput.value.trim();
+      if(!name||!message){showFeedback('Preencha seu nome e sua mensagem.','error');return}
+      if(allMessages.length>=999){showFeedback('O limite de mensagens foi atingido.','error');return}
+      button.disabled=true;button.style.opacity='.55';
+      const result=await window.dataSdk.create({name,message,created_at:new Date().toISOString()});
+      button.disabled=false;button.style.opacity='1';
+      if(result.isOk){nameInput.value='';textInput.value='';document.getElementById('char-count').textContent='0';showFeedback('Mensagem publicada com carinho.','success')}else{showFeedback('Não foi possível publicar sua mensagem.','error')}
+    });
+    document.getElementById('message-text').addEventListener('input',event=>{document.getElementById('char-count').textContent=event.target.value.length});
+    initDataSdk();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0d3bf0a471b627c',t:'MTc4MTcxNzA1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body></html>
