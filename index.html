@@ -44,6 +44,18 @@
     .btn-primary{background:var(--olive);color:white;padding:10px 14px;border-radius:8px;border:none;font-weight:600;cursor:pointer}
     .btn-secondary{background:transparent;border:1px solid var(--line);color:var(--olive-dark);padding:10px 14px;border-radius:8px;cursor:pointer}
     .mc-modal-close{position:absolute;right:12px;top:10px;background:transparent;border:none;font-size:20px;color:var(--muted);cursor:pointer}
+
+    /* Carousel fade styles */
+    #carousel-container{position:relative;overflow:hidden !important;--carousel-fade:.9s;-ms-overflow-style:none;scrollbar-width:none}
+    #carousel-container::-webkit-scrollbar{display:none;height:0;width:0}
+    .carousel-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity var(--carousel-fade, .9s) ease,visibility var(--carousel-fade, .9s) ease;will-change:opacity;display:block}
+    .carousel-slide.is-active{opacity:1;visibility:visible;z-index:1}
+    .carousel-slide{overflow:hidden}
+    .carousel-slide img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease,filter .6s ease;transform-origin:center center;display:block;max-width:none;max-height:none}
+    .carousel-slide.is-active img{transform:scale(1.02);filter:brightness(1)}
+    .carousel-indicators{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
+    .carousel-indicators button{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.45);border:none;cursor:pointer;transition:transform .16s ease,background .16s ease}
+    .carousel-indicators button.active{background:#fff;box-shadow:0 4px 10px rgba(0,0,0,.12);transform:scale(1.15)}
   </style>
   <script src="/_sdk/resizing_sdk.js" type="text/javascript"></script>
  </head>
@@ -75,20 +87,20 @@
         <p data-template-id="hero-description" class="canva-text leading-7 text-[#777367] mb-8 text-xl" style="color: rgb(119, 115, 103); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.7;">Depois de 10 anos de namoro, muitas risadas, encontros de carros, playlists infinitas e planos compartilhados, chegou a hora de começar oficialmente a nossa próxima aventura.</p>
        </div>
        <div class="relative w-full mb-12 overflow-hidden rounded-md">
-        <div id="carousel-container" class="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] flex overflow-x-auto snap-x snap-mandatory scroll-smooth" style="scroll-behavior: smooth;">
-         <div class="w-full flex-shrink-0 snap-center"><img data-template-id="hero-image" loading="lazy" class="canva-image w-full h-full object-cover" src="canva://MAHLK76nMdI/1" alt="Foto do casal no dia do casamento">
+         <div id="carousel-container" class="relative w-full h-[500px] sm:h-[600px] lg:h-[700px] overflow-hidden">
+         <div class="w-full flex-shrink-0 snap-center"><img data-template-id="hero-image" loading="lazy" class="canva-image w-full h-full object-cover" src="img\beijo_floresta.png" alt="Foto do casal no dia do casamento" style="object-position:60% 50%;">
          </div>
-         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-2" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/22707222/pexels-photo-22707222.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple holds hands walking on a countryside path at sunset, in a peaceful autumn setting.">
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-2" loading="lazy" class="canva-image w-full h-full object-cover" src="img\escada.png?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple holds hands walking on a countryside path at sunset, in a peaceful autumn setting.">
          </div>
-         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-3" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/11964107/pexels-photo-11964107.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A happy couple enjoys a playful moment together amidst nature, embracing love and joy.">
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-3" loading="lazy" class="canva-image w-full h-full object-cover" src="img\olhar.png?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A happy couple enjoys a playful moment together amidst nature, embracing love and joy.">
          </div>
-         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-4" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/30908048/pexels-photo-30908048.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A couple holding hands by a pond in Buenos Aires under warm sunlight, capturing a romantic moment.">
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-4" loading="lazy" class="canva-image w-full h-full object-cover" src="img\sorriso.png?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A couple holding hands by a pond in Buenos Aires under warm sunlight, capturing a romantic moment.">
          </div>
-         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-5" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/9143583/pexels-photo-9143583.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A joyful couple dances under twinkling string lights amidst tall trees at a serene campsite during dusk.">
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-5" loading="lazy" class="canva-image w-full h-full object-cover" src="img\costas.png?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A joyful couple dances under twinkling string lights amidst tall trees at a serene campsite during dusk.">
          </div>
-         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-6" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/37084950/pexels-photo-37084950.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple enjoying a scenic drive in a vintage convertible through dry countryside landscape.">
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-6" loading="lazy" class="canva-image w-full h-full object-cover" src="img\beijo_testa.png?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple enjoying a scenic drive in a vintage convertible through dry countryside landscape.">
          </div>
-         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-7" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/3152272/pexels-photo-3152272.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A romantic couple standing in a field at sunset, embracing in a serene countryside setting.">
+         <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-7" loading="lazy" class="canva-image w-full h-full object-cover" src="img\caminhada.png?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="A romantic couple standing in a field at sunset, embracing in a serene countryside setting.">
          </div>
          <div class="w-full flex-shrink-0 snap-center hidden"><img data-template-id="carousel-image-8" loading="lazy" class="canva-image w-full h-full object-cover" src="https://images.pexels.com/photos/16190499/pexels-photo-16190499.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Couple enjoying a romantic moment during a picnic in the park. Relaxed and intimate setting.">
          </div>
@@ -845,26 +857,101 @@ Agora, depois de quase 10 anos juntos, chegou a hora de celebrar tudo isso ao la
       function updateCountdown(){const today=new Date();today.setHours(0,0,0,0);document.getElementById('days-count').textContent=Math.max(0,Math.ceil((weddingDate-today)/86400000))}
       updateCountdown();setInterval(updateCountdown,60000);
       
-      // Carousel functionality
-      const carousel=document.getElementById('carousel-container'),prevBtn=document.querySelector('.carousel-prev'),nextBtn=document.querySelector('.carousel-next');
-      if(carousel){
-        const slides=carousel.querySelectorAll('[data-template-id]');
-        let currentSlide=0;
-        const updateCarousel=()=>{
-          slides.forEach((slide,idx)=>{
-            if(idx===currentSlide){
-              slide.parentElement.classList.remove('hidden');
-              carousel.scrollLeft=idx*carousel.offsetWidth;
-            }else{
-              slide.parentElement.classList.add('hidden');
+      // Carousel functionality: converte wrappers em camadas com fade, adiciona indicadores e autoplay
+      const carousel = document.getElementById('carousel-container');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+      if (carousel) {
+        // encontrar wrappers diretos que contenham imagens
+        let slideWraps = Array.from(carousel.children).filter(ch => ch.querySelector && ch.querySelector('img'));
+        if (slideWraps.length === 0) slideWraps = Array.from(carousel.querySelectorAll('div')).filter(ch => ch.querySelector && ch.querySelector('img'));
+
+        // transformar wrappers em camadas do carrossel
+        slideWraps.forEach((wrap, i) => {
+          wrap.classList.add('carousel-slide');
+          wrap.classList.remove('hidden');
+          wrap.dataset.slideIndex = i;
+          // garantir que a imagem dentro ocupe o espaço sem causar overflow
+          const img = wrap.querySelector('img');
+          if (img) {
+            img.style.maxWidth = '100%';
+            img.style.maxHeight = '100%';
+            img.style.objectFit = 'cover';
+            img.style.display = 'block';
+          }
+        });
+
+        // criar indicadores
+        let indicators = document.getElementById('carousel-indicators');
+        if (!indicators) {
+          indicators = document.createElement('div');
+          indicators.id = 'carousel-indicators';
+          indicators.className = 'carousel-indicators';
+          carousel.appendChild(indicators);
+        }
+        indicators.innerHTML = '';
+        slideWraps.forEach((_, i) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.dataset.index = i;
+          if (i === 0) btn.classList.add('active');
+          btn.addEventListener('click', (e) => { currentSlide = i; updateCarousel(); resetAuto(); });
+          indicators.appendChild(btn);
+        });
+
+        let currentSlide = 0;
+        let autoTimer = null;
+        let firstAutoFaster = true;
+        const AUTO_DELAY = 4500;
+
+        const updateCarousel = () => {
+          slideWraps.forEach((wrap, idx) => {
+            if (idx === currentSlide) {
+              wrap.classList.add('is-active');
+            } else {
+              wrap.classList.remove('is-active');
             }
           });
-          prevBtn.style.display=currentSlide>0?'block':'none';
-          nextBtn.style.display=currentSlide<slides.length-1?'block':'none';
+          // atualizar indicadores
+          Array.from(indicators.children).forEach((b, idx) => b.classList.toggle('active', idx === currentSlide));
+          // mostrar/ocultar botões de navegação (opcional)
+          if (prevBtn) prevBtn.style.display = currentSlide > 0 ? 'block' : 'none';
+          if (nextBtn) nextBtn.style.display = currentSlide < slideWraps.length - 1 ? 'block' : 'none';
         };
-        prevBtn.addEventListener('click',()=>{if(currentSlide>0){currentSlide--;updateCarousel()}});
-        nextBtn.addEventListener('click',()=>{if(currentSlide<slides.length-1){currentSlide++;updateCarousel()}});
+
+        const stopAuto = () => { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } };
+        const startAuto = () => {
+          if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          stopAuto();
+          autoTimer = setInterval(() => {
+            // acelerar levemente apenas a primeira transição automática
+            if (firstAutoFaster) {
+              firstAutoFaster = false;
+              carousel.style.setProperty('--carousel-fade', '.55s');
+              // restaurar após a transição (buffer curto)
+              setTimeout(() => carousel.style.setProperty('--carousel-fade', '.9s'), 700);
+            }
+            currentSlide = (currentSlide + 1) % slideWraps.length;
+            updateCarousel();
+          }, AUTO_DELAY);
+        };
+        const resetAuto = () => { stopAuto(); setTimeout(startAuto, 900); };
+
+        if (prevBtn) prevBtn.addEventListener('click', () => { if (currentSlide > 0) { currentSlide--; updateCarousel(); resetAuto(); } });
+        if (nextBtn) nextBtn.addEventListener('click', () => { if (currentSlide < slideWraps.length - 1) { currentSlide++; updateCarousel(); resetAuto(); } });
+
+        // pausa em hover / touch
+        carousel.addEventListener('mouseenter', stopAuto);
+        carousel.addEventListener('mouseleave', startAuto);
+        carousel.addEventListener('touchstart', stopAuto, { passive: true });
+        carousel.addEventListener('touchend', resetAuto, { passive: true });
+
+        // teclado (opcional)
+        document.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') { if (currentSlide > 0) { currentSlide--; updateCarousel(); resetAuto(); } } else if (e.key === 'ArrowRight') { if (currentSlide < slideWraps.length - 1) { currentSlide++; updateCarousel(); resetAuto(); } } });
+
+        // inicializa
         updateCarousel();
+        startAuto();
       }
 
       // Mensagem modal: abre antes do redirecionamento de pagamento
