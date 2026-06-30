@@ -272,6 +272,75 @@
     .btn-outline { color: var(--olive-dark); border: 1px solid var(--olive-dark); }
     .btn:hover { background: var(--gold); border-color: var(--gold); color: white; transform: scale(1.02); }
 
+    .password-gate {
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4000;
+      padding: 24px;
+    }
+    .password-card {
+      width: min(100%, 420px);
+      max-width: 100%;
+      background: var(--white);
+      border: 1px solid rgba(61, 77, 50, 0.12);
+      border-radius: 16px;
+      padding: clamp(28px, 6vw, 40px) clamp(20px, 4vw, 28px);
+      box-shadow: 0 12px 32px rgba(61, 77, 50, 0.08);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(12px, 3vw, 16px);
+    }
+    .password-card h3 {
+      font-family: 'Questrial';
+      color: var(--olive-dark);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 0;
+      font-size: 1.15rem;
+    }
+    .password-card p {
+      color: #666;
+      line-height: 1.7;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .password-input {
+      width: min(100%, 280px);
+      padding: 12px 14px;
+      border: 1px solid rgba(61, 77, 50, 0.2);
+      border-radius: 10px;
+      font-size: 1rem;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .password-error {
+      color: #9b3c3c;
+      font-size: 0.9rem;
+      min-height: 1.2em;
+      margin: 0;
+    }
+    .password-card .btn {
+      width: min(100%, 220px);
+      max-width: 220px;
+      display: inline-block;
+      padding: 12px 18px;
+      margin-top: -2px;
+    }
+    .password-hint {
+      font-size: 0.8rem;
+      color: var(--olive-mid);
+      margin: 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .hidden-content { display: none; }
+
     @media (min-width: 768px) {
       .btn-wrap {
         flex-direction: row;
@@ -286,7 +355,18 @@
   </style>
 </head>
 <body>
+  <div class="password-gate" id="passwordGate">
+    <div class="password-card">
+      <h3>Acesso reservado</h3>
+      <p>Digite a palavra-passe para entrar na página dos padrinhos.</p>
+      <input type="password" id="passwordInput" class="password-input" placeholder="Digite a palavra-passe" />
+      <div class="password-error" id="passwordError"></div>
+      <button class="btn btn-solid" onclick="checkPassword()">Entrar</button>
+      <div class="password-hint">Se tiver dúvida, fale conosco antes de continuar.</div>
+    </div>
+  </div>
 
+  <div id="siteContent" class="hidden-content">
   <nav>
     <div class="hamburger" onclick="toggleMenu()" id="navIcon">
       <span class="span1"></span>
@@ -386,8 +466,32 @@
     <p style="font-family: 'Questrial'; font-size: 1.2rem; color: var(--olive-dark); letter-spacing: 5px; text-transform: uppercase;">Esperamos por vocês!</p>
     <p style="margin-top: 30px; font-size: 0.6rem; letter-spacing: 8px; opacity: 0.4; text-transform: uppercase;">Isabella & Pedro • 24.10.2026</p>
   </footer>
+  </div>
 
   <script>
+    const correctPassword = 'pi44';
+
+    function checkPassword() {
+      const input = document.getElementById('passwordInput');
+      const error = document.getElementById('passwordError');
+      const gate = document.getElementById('passwordGate');
+      const content = document.getElementById('siteContent');
+
+      if (input.value.trim().toLowerCase() === correctPassword) {
+        gate.style.display = 'none';
+        content.classList.remove('hidden-content');
+        document.body.style.overflow = 'auto';
+      } else {
+        error.textContent = 'Palavra-passe incorreta. Tente novamente.';
+      }
+    }
+
+    document.getElementById('passwordInput').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        checkPassword();
+      }
+    });
+
     function toggleMenu() {
       const menu = document.getElementById('menu');
       const icon = document.getElementById('navIcon');
