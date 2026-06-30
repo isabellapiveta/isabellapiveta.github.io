@@ -339,7 +339,6 @@
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-    .hidden-content { display: none; }
 
     @media (min-width: 768px) {
       .btn-wrap {
@@ -355,18 +354,7 @@
   </style>
 </head>
 <body>
-  <div class="password-gate" id="passwordGate">
-    <div class="password-card">
-      <h3>Acesso reservado</h3>
-      <p>Digite a palavra-passe para entrar na página dos padrinhos.</p>
-      <input type="password" id="passwordInput" class="password-input" placeholder="Digite a palavra-passe" />
-      <div class="password-error" id="passwordError"></div>
-      <button class="btn btn-solid" onclick="checkPassword()">Entrar</button>
-      <div class="password-hint">Se tiver dúvida, fale conosco antes de continuar.</div>
-    </div>
-  </div>
-
-  <div id="siteContent" class="hidden-content">
+  <div id="siteContent">
   <nav>
     <div class="hamburger" onclick="toggleMenu()" id="navIcon">
       <span class="span1"></span>
@@ -374,7 +362,7 @@
       <span class="span3"></span>
     </div>
     <div class="nav-logo">
-      <img src="imgs\Logo.png" alt="Logo Isabella e Pedro">
+      <img src="imgs\Logo.png" alt="Logo do site de Isabella e Pedro">
     </div>
   </nav>
 
@@ -431,7 +419,7 @@
         <div class="color-circle" style="background: var(--color-3);"></div>
         <div class="color-circle" style="background: var(--color-4);"></div>
       </div>
-      <img src="imgs\madrinha.png" alt="Inspiração Madrinha" class="vector-inspiration">
+      <img src="imgs\madrinha.png" alt="Inspiração de look para madrinha" class="vector-inspiration">
     </div>
   </section>
 
@@ -444,7 +432,7 @@
           <strong>Dica Importante:</strong> Pedimos que a sua gravata combine com a cor do vestido da sua madrinha o mais próximo possível.
         </p>
       </div>
-      <img src="imgs\padrinho.png" alt="Inspiração Padrinho" class="vector-inspiration">
+      <img src="imgs\padrinho.png" alt="Inspiração de look para padrinho" class="vector-inspiration">
     </div>
   </section>
 
@@ -469,29 +457,6 @@
   </div>
 
   <script>
-    const correctPassword = 'pi44';
-
-    function checkPassword() {
-      const input = document.getElementById('passwordInput');
-      const error = document.getElementById('passwordError');
-      const gate = document.getElementById('passwordGate');
-      const content = document.getElementById('siteContent');
-
-      if (input.value.trim().toLowerCase() === correctPassword) {
-        gate.style.display = 'none';
-        content.classList.remove('hidden-content');
-        document.body.style.overflow = 'auto';
-      } else {
-        error.textContent = 'Palavra-passe incorreta. Tente novamente.';
-      }
-    }
-
-    document.getElementById('passwordInput').addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        checkPassword();
-      }
-    });
-
     function toggleMenu() {
       const menu = document.getElementById('menu');
       const icon = document.getElementById('navIcon');
